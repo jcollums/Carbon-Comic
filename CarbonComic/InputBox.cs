@@ -5,13 +5,13 @@ using System.Windows.Forms;
 
 namespace CarbonComic
 {
-    //This is a general-purpose InputBox implementation
+	//This is a general-purpose InputBox implementation
 	public class InputBox : Form
 	{
 		private IContainer components;
 		private TextBox txtInput;
 		private Label lblPrompt;
-        private Button cmdCancel;
+		private Button cmdCancel;
 		private Button cmdOK;
 
 		public InputBox()

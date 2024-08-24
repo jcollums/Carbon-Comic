@@ -5,13 +5,13 @@ using System.Windows.Forms;
 
 namespace CarbonComic
 {
-    //Just a window with the application logo, nothing special.
+	//Just a window with the application logo, nothing special.
 	public class AboutForm : Form
 	{
 		private IContainer components;
 		private PictureBox pictureBox1;
 		private Label label1;
-        private Label label2;
+		private Label label2;
 		private Label label3;
 		private Label label4;
 		private Label label5;

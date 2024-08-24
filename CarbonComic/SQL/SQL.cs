@@ -30,7 +30,7 @@ namespace CarbonComic
 		{
 			try
 			{
-                OleDbConnection dbcon = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\"CarbonComic\\CarbonLib.mdb\"");
+				OleDbConnection dbcon = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\"CarbonComic\\CarbonLib.mdb\"");
 				dbcon.Open();
 				dbcon.Close();
 				return dbcon;
@@ -38,7 +38,7 @@ namespace CarbonComic
 			catch (Exception ex)
 			{
 				Exception ex2 = error = ex;
-                MessageBox.Show(ex.Message);
+				MessageBox.Show(ex.Message);
 				return null;
 			}
 		}

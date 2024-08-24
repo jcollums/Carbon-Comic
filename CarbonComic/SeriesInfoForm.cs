@@ -47,10 +47,10 @@ namespace CarbonComic
 			Close();
 		}
 
-        /// <summary>
-        /// Load series info into the form
-        /// </summary>
-        /// <param name="index">The id of the series to load</param>
+		/// <summary>
+		/// Load series info into the form
+		/// </summary>
+		/// <param name="index">The id of the series to load</param>
 		private void LoadSeries(int index)
 		{
 			SeriesIndex = index;
@@ -60,8 +60,8 @@ namespace CarbonComic
 			cmdPrev.Enabled = (index != 0);
 			cmdNext.Enabled = (index != CC.Series.Count - 1);
 		}
-        
-        //Load next series
+
+		//Load next series
 		private void cmdNext_Click(object sender, EventArgs e)
 		{
 			try
@@ -75,7 +75,7 @@ namespace CarbonComic
 			}
 		}
 
-        //Load previous series
+		//Load previous series
 		private void cmdPrev_Click(object sender, EventArgs e)
 		{
 			try
@@ -89,7 +89,7 @@ namespace CarbonComic
 			}
 		}
 
-        //Save changes to the series
+		//Save changes to the series
 		private void SaveChanges()
 		{
 			ComicSeries comicSeries = (ComicSeries)CC.Series[SeriesIndex];
@@ -101,7 +101,7 @@ namespace CarbonComic
 			}
 		}
 
-        //Load the series that is selected in the issue llist
+		//Load the series that is selected in the issue llist
 		private void SeriesInfoForm_Load(object sender, EventArgs e)
 		{
 			owner = (MainForm)base.Owner;

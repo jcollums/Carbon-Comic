@@ -10,11 +10,11 @@ namespace CarbonComic
 		public int ID;
 		public string iName;
 		public int iType;
-        public int PublisherID;
+		public int PublisherID;
 		public int GroupID;
 		public ArrayList Changes = new ArrayList(); //Changes to save
 		public string PublisherName;
-		public string GroupName;    
+		public string GroupName;
 		private string OldName;     //When renaming the Series we keep track of what its old name was
 
 		public string Name
@@ -60,7 +60,7 @@ namespace CarbonComic
 			}
 		}
 
-        //constructor based on ID
+		//constructor based on ID
 		public ComicSeries(int ID)
 		{
 			Query sqlRow = CC.SQL.ExecQuery("SELECT s.*, p.name, g.name FROM series s, publishers p, groups g WHERE s.pub_id=p.id AND s.group_id=g.id AND s.id=" + ID);
@@ -69,13 +69,13 @@ namespace CarbonComic
 			sqlRow.Close();
 		}
 
-        //constructor that loads from an already-fetched SQL row
+		//constructor that loads from an already-fetched SQL row
 		public ComicSeries(ref Query sqlRow)
 		{
 			GetInfo(ref sqlRow);
 		}
 
-        //set vars from sql row
+		//set vars from sql row
 		public void GetInfo(ref Query sqlRow)
 		{
 			ID = (int)sqlRow.hash["id"];
@@ -87,7 +87,7 @@ namespace CarbonComic
 			GroupName = (string)sqlRow.hash["g.name"];
 		}
 
-        //Delete a series and its issues
+		//Delete a series and its issues
 		public void Delete(bool Files)
 		{
 			SQL sQL = new SQL();
@@ -102,7 +102,7 @@ namespace CarbonComic
 			{
 				try
 				{
-                    //Delete folder for series if file org is turned on
+					//Delete folder for series if file org is turned on
 					Directory.Delete(Settings.Default.LibraryDir + "\\" + CC.URLize(PublisherName) + "\\" + CC.URLize(GroupName) + "\\" + CC.URLize(Name));
 				}
 				catch
@@ -111,7 +111,7 @@ namespace CarbonComic
 			}
 		}
 
-        //Determine if the series has issues assigned to it
+		//Determine if the series has issues assigned to it
 		public bool HasIssues()
 		{
 			Query query = null;
@@ -141,7 +141,7 @@ namespace CarbonComic
 				{
 					if (Changes.Contains("Name"))
 					{
-                        //Rename folders
+						//Rename folders
 						string text = Settings.Default.LibraryDir + "\\" + CC.URLize(PublisherName) + "\\" + CC.URLize(GroupName) + "\\" + CC.URLize(OldName) + "\\";
 						string text2 = Settings.Default.LibraryDir + "\\" + CC.URLize(PublisherName) + "\\" + CC.URLize(GroupName) + "\\" + CC.URLize(Name) + "\\";
 						CC.SQL.ExecQuery("UPDATE issues SET filename=" + CC.SQLReplaceLeft("filename", text, text2));
@@ -174,7 +174,7 @@ namespace CarbonComic
 			if (!query.NextResult())
 			{
 				query.Close();
-                //Create series if it doesn't exist.
+				//Create series if it doesn't exist.
 				CC.SQL.ExecQuery("INSERT INTO series (name, group_id, pub_id, type) VALUES ('" + SQL.Prepare(SeriesName) + "', " + GroupID + ", " + PubID + ", 0)");
 				return GetID(SeriesName, GroupID, PubID);
 			}
@@ -183,7 +183,7 @@ namespace CarbonComic
 			return result;
 		}
 
-        //When comparing series we only care about its name
+		//When comparing series we only care about its name
 		public int CompareTo(object o)
 		{
 			ComicSeries comicSeries = (ComicSeries)o;

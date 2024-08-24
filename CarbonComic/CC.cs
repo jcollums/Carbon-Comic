@@ -14,12 +14,12 @@ using System.Windows.Forms;
 
 namespace CarbonComic
 {
-    /// <summary>
-    /// This class contains global variables, structures, and functions
-    /// </summary>
-    public sealed class CC
+	/// <summary>
+	/// This class contains global variables, structures, and functions
+	/// </summary>
+	public sealed class CC
 	{
-        //For storing auto-tag settings
+		//For storing auto-tag settings
 		public struct AutoTagSettings
 		{
 			public string Pattern;
@@ -27,7 +27,7 @@ namespace CarbonComic
 			public bool usePublisher;
 			public string Publisher;
 			public bool useGroup;
-            public string Group;
+			public string Group;
 			public bool useSeries;
 			public string Series;
 			public bool useVolume;
@@ -36,7 +36,7 @@ namespace CarbonComic
 			public string Plot;
 		}
 
-        //Types of issues
+		//Types of issues
 		public enum IssueType
 		{
 			Normal,
@@ -44,7 +44,7 @@ namespace CarbonComic
 			Special
 		}
 
-        //Statuses that would be reflected by a special icon in the issue list
+		//Statuses that would be reflected by a special icon in the issue list
 		public enum IssueStatus
 		{
 			Normal = -1,
@@ -52,7 +52,7 @@ namespace CarbonComic
 			Marked
 		}
 
-        //Types of Series
+		//Types of Series
 		public enum SeriesType
 		{
 			All = -1,
@@ -71,14 +71,14 @@ namespace CarbonComic
 
 		public static SQL SQL = new SQL();  //Used to interact with the database
 
-        
-        /// <summary>
-        /// This is mostly used to replace the filepath of an issue whenever files are reorganized
-        /// </summary>
-        /// <param name="field">Field name</param>
-        /// <param name="find">What to replace</param>
-        /// <param name="replace">What to replace with</param>
-        /// <returns></returns>
+
+		/// <summary>
+		/// This is mostly used to replace the filepath of an issue whenever files are reorganized
+		/// </summary>
+		/// <param name="field">Field name</param>
+		/// <param name="find">What to replace</param>
+		/// <param name="replace">What to replace with</param>
+		/// <returns></returns>
 		public static string SQLReplaceLeft(string field, string find, string replace)
 		{
 			find += "\\";
@@ -86,11 +86,11 @@ namespace CarbonComic
 			return "IIF(MID(" + field + ",1," + find.Length + ")='" + find + "','" + replace + "' + MID(" + field + "," + (find.Length + 1) + "), " + field + ")";
 		}
 
-        /// <summary>
-        /// This creates a string array out of an ArrayList so that it can be used in queries
-        /// </summary>
-        /// <param name="list">The ArrayList to stringify</param>
-        /// <returns></returns>
+		/// <summary>
+		/// This creates a string array out of an ArrayList so that it can be used in queries
+		/// </summary>
+		/// <param name="list">The ArrayList to stringify</param>
+		/// <returns></returns>
 		public static string[] StringList(ArrayList list)
 		{
 			string[] array = new string[list.Count];
@@ -134,7 +134,7 @@ namespace CarbonComic
 			return null;
 		}
 
-        //This opens a document with its default program
+		//This opens a document with its default program
 		public static bool ExecuteFile(string FilePath)
 		{
 			Process process = new Process();
@@ -152,7 +152,7 @@ namespace CarbonComic
 			}
 		}
 
-        //Basic check if file is an image or not
+		//Basic check if file is an image or not
 		public static bool IsImageExt(string FileName)
 		{
 			string text = null;
@@ -164,26 +164,26 @@ namespace CarbonComic
 			return false;
 		}
 
-        /// <summary>
-        /// Loads or retrieves the cover thumbnail of an issue
-        /// </summary>
-        /// <param name="ID">ID of the issue</param>
-        /// <param name="Window">Window which contains the ImageList cache</param>
-        /// <returns></returns>
+		/// <summary>
+		/// Loads or retrieves the cover thumbnail of an issue
+		/// </summary>
+		/// <param name="ID">ID of the issue</param>
+		/// <param name="Window">Window which contains the ImageList cache</param>
+		/// <returns></returns>
 		public static Image GetIssueCover(int ID, MainForm Window)
 		{
 			string text = null;
 			Image image = null;
 			ImageList issueCovers = Window.IssueCovers;
 
-            //If cover of the issue isn't loaded yet, get its filepath and add it to the ImageList
+			//If cover of the issue isn't loaded yet, get its filepath and add it to the ImageList
 			if (!issueCovers.Images.ContainsKey(ID.ToString()))
 			{
 				text = Path.Combine(Application.StartupPath, Settings.Default.CoverDir) + "\\" + ID.ToString() + ".jpg";
 				image = (File.Exists(text) ? Image.FromFile(text) : Resources.DefaultCover);
 				issueCovers.Images.Add(ID.ToString(), image);
 			}
-            //Otherwise, return image data from ImageList
+			//Otherwise, return image data from ImageList
 			else
 			{
 				image = issueCovers.Images[ID.ToString()];
@@ -192,18 +192,18 @@ namespace CarbonComic
 		}
 
 
-        //Overloaded function, assume Window is MainForm
+		//Overloaded function, assume Window is MainForm
 		public static Image GetIssueCover(int ID)
 		{
 			return GetIssueCover(ID, MainForm.Root);
 		}
 
-        /// <summary>
-        /// Extract a file from a zip archive
-        /// </summary>
-        /// <param name="ArcFile">Archive to unzip</param>
-        /// <param name="ArcEntry">File within the archive to unzip</param>
-        /// <param name="targetpath">Where to unzip the file</param>
+		/// <summary>
+		/// Extract a file from a zip archive
+		/// </summary>
+		/// <param name="ArcFile">Archive to unzip</param>
+		/// <param name="ArcEntry">File within the archive to unzip</param>
+		/// <param name="targetpath">Where to unzip the file</param>
 		public static void unzip(string ArcFile, string ArcEntry, string targetpath)
 		{
 			ZipInputStream zipInputStream = new ZipInputStream(File.OpenRead(ArcFile));
@@ -249,14 +249,14 @@ namespace CarbonComic
 			zipInputStream.Close();
 		}
 
-        /// <summary>
-        /// Invoke the generic inputbox form
-        /// </summary>
-        /// <param name="Prompt">Explanation of what to input</param>
-        /// <param name="Title">Title of window</param>
-        /// <param name="Default">Default entry, if any</param>
-        /// <param name="Validation">Handler for validating the input received</param>
-        /// <returns></returns>
+		/// <summary>
+		/// Invoke the generic inputbox form
+		/// </summary>
+		/// <param name="Prompt">Explanation of what to input</param>
+		/// <param name="Title">Title of window</param>
+		/// <param name="Default">Default entry, if any</param>
+		/// <param name="Validation">Handler for validating the input received</param>
+		/// <returns></returns>
 		public static string InputBox(string Prompt, string Title, string Default, EventHandler Validation)
 		{
 			InputBox inputBox = new InputBox();
@@ -275,13 +275,13 @@ namespace CarbonComic
 			return inputBox.Controls["txtInput"].Text;
 		}
 
-        //Overloaded function, no event handler for validation
-        public static string InputBox(string Prompt, string Title, string Default)
-        {
-            return InputBox(Prompt, Title, Default, null);
-        }
+		//Overloaded function, no event handler for validation
+		public static string InputBox(string Prompt, string Title, string Default)
+		{
+			return InputBox(Prompt, Title, Default, null);
+		}
 
-        //Convert an image to JPEG
+		//Convert an image to JPEG
 		public static string ConvertJPG(string filename)
 		{
 			using (Image image = Image.FromFile(filename))
@@ -292,8 +292,8 @@ namespace CarbonComic
 				return text;
 			}
 		}
-        
-        //Get the MD5 hash for a file, used for duplicate detection
+
+		//Get the MD5 hash for a file, used for duplicate detection
 		public static string md5file(FileStream file)
 		{
 			MD5CryptoServiceProvider mD5CryptoServiceProvider = new MD5CryptoServiceProvider();
@@ -307,10 +307,10 @@ namespace CarbonComic
 			return stringBuilder.ToString();
 		}
 
-        //Determine if the file is a RAR or ZIP, or something else
+		//Determine if the file is a RAR or ZIP, or something else
 		public static string GetArchiveType(string filename)
 		{
-            //Try to open it as a RAR
+			//Try to open it as a RAR
 			try
 			{
 				Unrar unrar = new Unrar();
@@ -320,7 +320,7 @@ namespace CarbonComic
 			}
 			catch
 			{
-                //Try to open it as a ZIP
+				//Try to open it as a ZIP
 				try
 				{
 					ZipFile zipFile = new ZipFile(filename);
@@ -329,44 +329,44 @@ namespace CarbonComic
 				}
 				catch
 				{
-                    //Failed to open as RAR or ZIP, must be something else
+					//Failed to open as RAR or ZIP, must be something else
 					FileInfo fileInfo = new FileInfo(filename);
 					string extension = fileInfo.Extension;
 					if (extension != ".cbr" && extension != ".cbz")
 					{
 						return extension;
 					}
-                    //If RAR and ZIP failed to open it, but its extention is CBR or CBZ, then we know that's a lie
-                    //And return nothing.
+					//If RAR and ZIP failed to open it, but its extention is CBR or CBZ, then we know that's a lie
+					//And return nothing.
 				}
 			}
 			return "";
 		}
 
-        /// <summary>
-        /// Convert an image to a proportional thumbnail
-        /// </summary>
-        /// <param name="src">Source image</param>
-        /// <param name="dst">Destination of thumbnail</param>
+		/// <summary>
+		/// Convert an image to a proportional thumbnail
+		/// </summary>
+		/// <param name="src">Source image</param>
+		/// <param name="dst">Destination of thumbnail</param>
 		public static void CreateThumbnail(string src, string dst)
 		{
-            //Open image
+			//Open image
 			using (Image image = Image.FromFile(src))
 			{
-                //Create a blank canvas that matches with user thumbnail settings
+				//Create a blank canvas that matches with user thumbnail settings
 				Image image2 = new Bitmap(Settings.Default.ThumbWidth, Settings.Default.ThumbHeight, image.PixelFormat);
 				Graphics graphics = Graphics.FromImage(image2);
 
-                //Sets up parameters for a relatively high-quality thumbnail
+				//Sets up parameters for a relatively high-quality thumbnail
 				graphics.CompositingQuality = CompositingQuality.HighQuality;
 				graphics.SmoothingMode = SmoothingMode.HighQuality;
 				graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
 				EncoderParameter encoderParameter = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, Settings.Default.ThumbQuality);
 				EncoderParameters encoderParameters = new EncoderParameters(1);
 				encoderParameters.Param[0] = encoderParameter;
-				
-                //Find a JPEG image encoder
-                ImageCodecInfo[] imageEncoders = ImageCodecInfo.GetImageEncoders();
+
+				//Find a JPEG image encoder
+				ImageCodecInfo[] imageEncoders = ImageCodecInfo.GetImageEncoders();
 				ImageCodecInfo encoder = null;
 				for (int i = 0; i < imageEncoders.Length; i++)
 				{
@@ -376,7 +376,7 @@ namespace CarbonComic
 					}
 				}
 
-                //Find out how much we need to cut off from the sides of the original image to make this proportional
+				//Find out how much we need to cut off from the sides of the original image to make this proportional
 				int num = image.Height * Settings.Default.ThumbWidth / Settings.Default.ThumbHeight;
 				int num2 = image.Width - num;
 				if (num2 < 0)
@@ -384,19 +384,19 @@ namespace CarbonComic
 					num2 = 0;
 				}
 
-                //I honeslty don't remember why this is necessary
-                //But I suppose it's comparing a portion of srcRect to the image, then scaling down using the dimensions of destRect
+				//I honeslty don't remember why this is necessary
+				//But I suppose it's comparing a portion of srcRect to the image, then scaling down using the dimensions of destRect
 				Rectangle destRect = new Rectangle(0, 0, Settings.Default.ThumbWidth, Settings.Default.ThumbHeight);
 				Rectangle srcRect = new Rectangle(num2, 0, num, image.Height);
-				
-                //Paint canvas, save and close
-                graphics.DrawImage(image, destRect, srcRect, GraphicsUnit.Pixel);
+
+				//Paint canvas, save and close
+				graphics.DrawImage(image, destRect, srcRect, GraphicsUnit.Pixel);
 				image2.Save(dst, encoder, encoderParameters);
 				image.Dispose();
 			}
 		}
 
-        //Converts bytes to a string for displaying the size of the library
+		//Converts bytes to a string for displaying the size of the library
 		public static string ByteToString(double Bytes)
 		{
 			string text = null;
@@ -413,7 +413,7 @@ namespace CarbonComic
 			return Bytes.ToString("N2") + " " + text;
 		}
 
-        //A function to move a file, making sure to create any directories implied by the dst path
+		//A function to move a file, making sure to create any directories implied by the dst path
 		public static void Rename(string src, string dst)
 		{
 			if ((src != dst) & File.Exists(src))
@@ -451,7 +451,7 @@ namespace CarbonComic
 			}
 		}
 
-        //Function to make sure that a file name won't contain invalid characters
+		//Function to make sure that a file name won't contain invalid characters
 		public static string URLize(string name)
 		{
 			name = name.Replace(":", " -");

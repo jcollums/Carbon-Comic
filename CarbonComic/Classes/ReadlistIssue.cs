@@ -3,11 +3,11 @@ using System.Collections;
 
 namespace CarbonComic
 {
-    //Handles an issue's assignment to a readlist and its position therein
+	//Handles an issue's assignment to a readlist and its position therein
 	public class ReadlistIssue : ComicIssue, IComparable
 	{
 		public int iPosition;
-        public int RowID;
+		public int RowID;
 		public int ReadlistID;
 
 		private ArrayList Changes = new ArrayList();

@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace CarbonComic
 {
-    //Handles Readlists and maintains a list of its issues
+	//Handles Readlists and maintains a list of its issues
 	public class Readlist
 	{
 		public int ID;
@@ -103,11 +103,11 @@ namespace CarbonComic
 			query.Close();
 		}
 
-        /// <summary>
-        /// Change the position of an issue within the readlist, shifting surrounding issues automatically
-        /// </summary>
-        /// <param name="index">Issue to move</param>
-        /// <param name="pos">New position</param>
+		/// <summary>
+		/// Change the position of an issue within the readlist, shifting surrounding issues automatically
+		/// </summary>
+		/// <param name="index">Issue to move</param>
+		/// <param name="pos">New position</param>
 		public void setPosition(int index, int pos)
 		{
 			ReadlistIssue readlistIssue = (ReadlistIssue)Issues[index];
@@ -133,7 +133,7 @@ namespace CarbonComic
 			Changes.Add("Issues");
 		}
 
-        //Unimplemented Smart Readlist feature
+		//Unimplemented Smart Readlist feature
 		public string SmartSQL()
 		{
 			if (Smart)
@@ -150,7 +150,7 @@ namespace CarbonComic
 			return "";
 		}
 
-        //Save changes if necessary
+		//Save changes if necessary
 		public bool SaveChanges()
 		{
 			ArrayList arrayList = new ArrayList();
@@ -174,20 +174,20 @@ namespace CarbonComic
 			return false;
 		}
 
-        //Delete both readlist and its association with issues
+		//Delete both readlist and its association with issues
 		public void Delete()
 		{
 			CC.SQL.ExecQuery("DELETE FROM readlist_issues WHERE list_id=" + ID);
 			CC.SQL.ExecQuery("DELETE FROM readlists WHERE id=" + ID);
 		}
 
-        //Get ID of Readlist based on name
+		//Get ID of Readlist based on name
 		public static int GetID(string name)
 		{
 			return GetID(name, false);
 		}
 
-        //Get ID of Readlist based on name, create it if it doesn't already exist
+		//Get ID of Readlist based on name, create it if it doesn't already exist
 		public static int GetID(string name, bool create)
 		{
 			int result = -1;

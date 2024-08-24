@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace CarbonComic
 {
-    //This form shows when editing multiple series at once
+	//This form shows when editing multiple series at once
 	public class SeriesMultiInfoForm : Form
 	{
 		private IContainer components;
@@ -32,38 +32,38 @@ namespace CarbonComic
 			Query query = null;
 			Cursor = Cursors.WaitCursor;
 
-            //For each of the selected series
+			//For each of the selected series
 			foreach (int selectedIndex in MainForm.Root.SeriesList.SelectedIndices)
 			{
 				ComicSeries comicSeries;
-                comicSeries = (ComicSeries)CC.Series[selectedIndex - 1];
-                //If the checkbox for determining series type is checked
+				comicSeries = (ComicSeries)CC.Series[selectedIndex - 1];
+				//If the checkbox for determining series type is checked
 				if (chkAuto.Checked)
 				{
-                    //get the number of issues in the current series
+					//get the number of issues in the current series
 					query = CC.SQL.ExecQuery("SELECT COUNT(id) FROM issues WHERE series_id=" + Convert.ToString(comicSeries.ID));
 					query.NextResult();
 					num = (int)query.hash[0];
 					query.Close();
 
-                    //If there's only one issue, it's a One-Shot
+					//If there's only one issue, it's a One-Shot
 					if (num == 1)
 					{
 						cboType.SelectedIndex = 2;
 					}
-                    //If it's less than 12, it's a limited series
+					//If it's less than 12, it's a limited series
 					else if (num <= 12)
 					{
 						cboType.SelectedIndex = 1;
 					}
-                    //else, it's a normal series
+					//else, it's a normal series
 					else
 					{
 						cboType.SelectedIndex = 0;
 					}
 				}
 
-                //save changes
+				//save changes
 				comicSeries.Type = cboType.SelectedIndex;
 				comicSeries.SaveChanges();
 			}

@@ -309,7 +309,7 @@ namespace CarbonComic
 			Status = ((!iMissing) ? (iMarked ? 1 : (-1)) : 0);
 		}
 
-        //Determine what the filepath of the issue should be
+		//Determine what the filepath of the issue should be
 		public string GenerateFilename()
 		{
 			string libraryDir = Settings.Default.LibraryDir;
@@ -335,18 +335,18 @@ namespace CarbonComic
 				query.Close();
 				switch (Type)
 				{
-				case 0:
-					libraryDir = libraryDir + " #" + Number.ToString("000");
-					break;
-				case 1:
-					libraryDir = libraryDir + " Annual " + Number;
-					break;
-				case 2:
-					if (text2 != "")
-					{
-						libraryDir = libraryDir + " " + text2;
-					}
-					break;
+					case 0:
+						libraryDir = libraryDir + " #" + Number.ToString("000");
+						break;
+					case 1:
+						libraryDir = libraryDir + " Annual " + Number;
+						break;
+					case 2:
+						if (text2 != "")
+						{
+							libraryDir = libraryDir + " " + text2;
+						}
+						break;
 				}
 				if ((text2 != "") & (Type != 2))
 				{
@@ -749,7 +749,7 @@ namespace CarbonComic
 				{
 					try
 					{
-                        String dst = Path.Combine(Application.StartupPath, Settings.Default.CoverDir) + "\\" + ID + ".jpg";
+						String dst = Path.Combine(Application.StartupPath, Settings.Default.CoverDir) + "\\" + ID + ".jpg";
 						CC.CreateThumbnail(text, dst);
 						File.Delete(text);
 					}

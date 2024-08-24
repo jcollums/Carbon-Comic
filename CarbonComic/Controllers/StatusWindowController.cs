@@ -21,13 +21,13 @@ namespace CarbonComic
 
 		private int Current;
 
-        /// <summary>
-        /// Initialize the controller with specific form elements
-        /// </summary>
-        /// <param name="Window">The label element that will show the name of the task</param>
-        /// <param name="Progress">The progress bar element that will show the progress of the task</param>
-        /// <param name="Switch">The image button that will serve to switch between multiple tasks</param>
-        /// <param name="Stop">The image button that will stop the current task</param>
+		/// <summary>
+		/// Initialize the controller with specific form elements
+		/// </summary>
+		/// <param name="Window">The label element that will show the name of the task</param>
+		/// <param name="Progress">The progress bar element that will show the progress of the task</param>
+		/// <param name="Switch">The image button that will serve to switch between multiple tasks</param>
+		/// <param name="Stop">The image button that will stop the current task</param>
 		public StatusWindowController(Label Window, ProgressBar Progress, PictureBox Switch, PictureBox Stop)
 		{
 			WindowLabel = Window;
@@ -43,7 +43,7 @@ namespace CarbonComic
 			Windows[index] = statusItems;
 		}
 
-        //???
+		//???
 		public void setProgressStyle(int index, ProgressBarStyle val)
 		{
 			StatusItems statusItems = (StatusItems)Windows[index];
@@ -51,7 +51,7 @@ namespace CarbonComic
 			Windows[index] = statusItems;
 		}
 
-        //update the name of a particular task
+		//update the name of a particular task
 		public void setTask(int index, string val)
 		{
 			StatusItems statusItems = (StatusItems)Windows[index];
@@ -59,7 +59,7 @@ namespace CarbonComic
 			Windows[index] = statusItems;
 		}
 
-        //???
+		//???
 		public void setShowStop(int index, bool val)
 		{
 			StatusItems statusItems = (StatusItems)Windows[index];

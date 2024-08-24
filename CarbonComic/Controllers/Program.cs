@@ -4,11 +4,11 @@ using System.IO;
 
 namespace CarbonComic
 {
-	internal static class Program
-	{
-		[STAThread]
-		private static void Main()
-		{
+    internal static class Program
+    {
+        [STAThread]
+        private static void Main()
+        {
             if (!File.Exists("CarbonComic\\unrar.dll"))
             {
                 MessageBox.Show("unrar.dll was not found; Carbon Comic will be unable to extract cover art for CBR files.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -20,8 +20,8 @@ namespace CarbonComic
             }
 
             Application.EnableVisualStyles();
-			Application.Run(new MainForm());
-		}
+            Application.Run(new MainForm());
+        }
 
-	}
+    }
 }

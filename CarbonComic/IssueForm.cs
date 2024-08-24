@@ -7,10 +7,10 @@ using System.Windows.Forms;
 
 namespace CarbonComic
 {
-    //This form shows info for a single issue
+	//This form shows info for a single issue
 	public class IssueForm : Form
 	{
-        private int CurrentIssue;
+		private int CurrentIssue;
 		private IContainer components;
 		internal ComboBox cboType;
 		internal Label Label7;
@@ -18,7 +18,7 @@ namespace CarbonComic
 		internal ComboBox cboSeries;
 		internal Label Label5;
 		internal NumericUpDown udNumber;
-        internal Label Label4;
+		internal Label Label4;
 		internal Label Label6;
 		internal Button cmdPrev;
 		internal NumericUpDown udVol;
@@ -28,16 +28,16 @@ namespace CarbonComic
 		internal Label lblFileName;
 		internal Label lblAdded;
 		internal Label lblPublished;
-        internal Label lblSize;
+		internal Label lblSize;
 		internal Label lblKind;
-        internal Label lblSeries;
+		internal Label lblSeries;
 		internal Label Label14;
 		internal Label Label13;
-        internal Label lblWhere;
+		internal Label lblWhere;
 		internal Label Label11;
 		internal Label Label10;
 		internal Label lblPlot;
-        internal Label lblNumber;
+		internal Label lblNumber;
 		internal PictureBox CoverPreview;
 		internal TabPage TabPage2;
 		internal CheckBox chkPublished;
@@ -58,18 +58,18 @@ namespace CarbonComic
 			tabInfo.SelectedIndexChanged += tabInfo_SelectedIndexChanged;
 		}
 
-        //Change form height to fit contents in different tabs
-        //Hard coded, apparently.
+		//Change form height to fit contents in different tabs
+		//Hard coded, apparently.
 		private void tabInfo_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			switch (tabInfo.SelectedIndex)
 			{
-			case 0:
-				base.Height = 325;
-				break;
-			case 1:
-				base.Height = 365;
-				break;
+				case 0:
+					base.Height = 325;
+					break;
+				case 1:
+					base.Height = 365;
+					break;
 			}
 		}
 
@@ -100,15 +100,15 @@ namespace CarbonComic
 			{
 				switch (comicIssue.Type)
 				{
-				case 0:
-					lblNumber.Text = "Issue #" + comicIssue.Number;
-					break;
-				case 1:
-					lblNumber.Text = "Annual " + comicIssue.Number;
-					break;
-				case 2:
-					lblNumber.Text = "Special";
-					break;
+					case 0:
+						lblNumber.Text = "Issue #" + comicIssue.Number;
+						break;
+					case 1:
+						lblNumber.Text = "Annual " + comicIssue.Number;
+						break;
+					case 2:
+						lblNumber.Text = "Special";
+						break;
 				}
 			}
 			else
@@ -118,15 +118,15 @@ namespace CarbonComic
 			lblNumber.Text = lblNumber.Text + " (" + comicIssue.Pages + " Pages)";
 			switch (Path.GetExtension(comicIssue.FileName))
 			{
-			case ".cbr":
-				lblKind.Text = "Comic Book RAR File";
-				break;
-			case ".cbz":
-				lblKind.Text = "Comic Book Zip File";
-				break;
-			case ".pdf":
-				lblKind.Text = "Comic Book PDF File";
-				break;
+				case ".cbr":
+					lblKind.Text = "Comic Book RAR File";
+					break;
+				case ".cbz":
+					lblKind.Text = "Comic Book Zip File";
+					break;
+				case ".pdf":
+					lblKind.Text = "Comic Book PDF File";
+					break;
 			}
 			lblSize.Text = CC.ByteToString((double)comicIssue.FileSize);
 			if (comicIssue.Published.Year != 1)
@@ -141,7 +141,7 @@ namespace CarbonComic
 			CoverPreview.Image = CC.GetIssueCover(comicIssue.ID);
 			lblFileName.Text = comicIssue.FileName;
 
-            //If file organization is turned on and the issue is missing, disable everything.
+			//If file organization is turned on and the issue is missing, disable everything.
 			if (Settings.Default.OrganizeMethod != 0)
 			{
 				foreach (Control control in tabInfo.TabPages[1].Controls)
@@ -218,7 +218,7 @@ namespace CarbonComic
 			Close();
 		}
 
-        //Clicking on the cover gives the option to select a new cover
+		//Clicking on the cover gives the option to select a new cover
 		private void CoverPreview_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog openFileDialog = new OpenFileDialog();

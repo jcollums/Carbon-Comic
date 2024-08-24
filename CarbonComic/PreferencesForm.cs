@@ -11,187 +11,187 @@ namespace CarbonComic
     /// Accessed through Settings.Default
     /// </summary>
 	public class PreferencesForm : Form
-	{
-		private IContainer components;
-		private TabControl tabControl1;
-		private TabPage tabPage1;
-		private TabPage tabPage2;
-		internal TableLayoutPanel TableLayoutPanel1;
-		internal Button Cancel_Button;
+    {
+        private IContainer components;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        internal TableLayoutPanel TableLayoutPanel1;
+        internal Button Cancel_Button;
         internal Button OK_Button;
-		private Button cmdLibrary;
-		private TextBox txtLibrary;
-		private GroupBox groupBox1;
-		private Label label9;
-		private NumericUpDown udRatio;
-		private Label label8;
-		private NumericUpDown udHeight;
-		private Label label6;
-		private NumericUpDown udWidth;
-		private Label label5;
-		private NumericUpDown udQuality;
-		private GroupBox groupBox2;
-		private Label label4;
-		private Button cmdPDF;
-		private TextBox txtPDF;
-		private Label label7;
-		private Button cmdZIP;
-		private TextBox txtZIP;
-		private Label label3;
-		private Button cmdRAR;
-		private TextBox txtRAR;
-		private ComboBox cboViewMode;
-		private Label label10;
-		private CheckBox chkThumbnail;
-		private Label label1;
-		private TabPage tabPage3;
-		private Label label22;
-		private Label label21;
-		private CheckBox chkDuplicates;
-		internal TabControl tabImport;
-		private TabPage tabPage9;
-		private Label label20;
-		private TabPage tabPage8;
-		private GroupBox groupBox3;
-		private TextBox textBox1;
-		private RadioButton radioButton2;
-		private RadioButton radioButton1;
-		private ComboBox comboBox1;
-		internal TabPage tabPage5;
-		private Button cmdOption;
-		internal Button cmdConvert;
-		internal Button cmdPublisher;
-		internal Button cmdGroup;
-		internal Button cmdIssue;
-		internal Button cmdPlot;
-		internal Button cmdSeries;
-		internal Button cmdVolume;
-		internal TextBox txtKeywords;
-		internal TabPage tabPage6;
-		internal ComboBox cboTest;
-		internal Button cmdTest;
-		internal TextBox txtRegexPublisher;
-		internal TextBox txtRegexGroup;
-		internal TextBox txtPattern;
-		internal TextBox txtRegexPlot;
-		internal Label label12;
-		internal TextBox txtRegexSeries;
-		internal Label label13;
-		internal Label label14;
-		internal Label label15;
-		internal Label label16;
-		internal TextBox txtRegexIssue;
-		internal TextBox txtRegexVolume;
-		internal Label label17;
-		private TabPage tabPage7;
-		private Button button2;
-		private Button button1;
-		private Label label19;
-		private ListBox listBox2;
-		private Label label18;
-		private ListBox listBox1;
-		private Label label2;
-		private ComboBox cboOrganizeMethod;
-		private Label label23;
-		private Label label11;
+        private Button cmdLibrary;
+        private TextBox txtLibrary;
+        private GroupBox groupBox1;
+        private Label label9;
+        private NumericUpDown udRatio;
+        private Label label8;
+        private NumericUpDown udHeight;
+        private Label label6;
+        private NumericUpDown udWidth;
+        private Label label5;
+        private NumericUpDown udQuality;
+        private GroupBox groupBox2;
+        private Label label4;
+        private Button cmdPDF;
+        private TextBox txtPDF;
+        private Label label7;
+        private Button cmdZIP;
+        private TextBox txtZIP;
+        private Label label3;
+        private Button cmdRAR;
+        private TextBox txtRAR;
+        private ComboBox cboViewMode;
+        private Label label10;
+        private CheckBox chkThumbnail;
+        private Label label1;
+        private TabPage tabPage3;
+        private Label label22;
+        private Label label21;
+        private CheckBox chkDuplicates;
+        internal TabControl tabImport;
+        private TabPage tabPage9;
+        private Label label20;
+        private TabPage tabPage8;
+        private GroupBox groupBox3;
+        private TextBox textBox1;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
+        private ComboBox comboBox1;
+        internal TabPage tabPage5;
+        private Button cmdOption;
+        internal Button cmdConvert;
+        internal Button cmdPublisher;
+        internal Button cmdGroup;
+        internal Button cmdIssue;
+        internal Button cmdPlot;
+        internal Button cmdSeries;
+        internal Button cmdVolume;
+        internal TextBox txtKeywords;
+        internal TabPage tabPage6;
+        internal ComboBox cboTest;
+        internal Button cmdTest;
+        internal TextBox txtRegexPublisher;
+        internal TextBox txtRegexGroup;
+        internal TextBox txtPattern;
+        internal TextBox txtRegexPlot;
+        internal Label label12;
+        internal TextBox txtRegexSeries;
+        internal Label label13;
+        internal Label label14;
+        internal Label label15;
+        internal Label label16;
+        internal TextBox txtRegexIssue;
+        internal TextBox txtRegexVolume;
+        internal Label label17;
+        private TabPage tabPage7;
+        private Button button2;
+        private Button button1;
+        private Label label19;
+        private ListBox listBox2;
+        private Label label18;
+        private ListBox listBox1;
+        private Label label2;
+        private ComboBox cboOrganizeMethod;
+        private Label label23;
+        private Label label11;
 
-		public PreferencesForm()
-		{
-			InitializeComponent();
-			tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
-		}
+        public PreferencesForm()
+        {
+            InitializeComponent();
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+        }
 
-		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			switch (tabControl1.SelectedIndex)
-			{
-			case 0:
-				base.Height = 275;
-				break;
-			case 1:
-				base.Height = 335;
-				break;
-			case 2:
-				base.Height = 255;
-				break;
-			}
-		}
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabControl1.SelectedIndex)
+            {
+                case 0:
+                    base.Height = 275;
+                    break;
+                case 1:
+                    base.Height = 335;
+                    break;
+                case 2:
+                    base.Height = 255;
+                    break;
+            }
+        }
 
-		private void ChangeLibraryDir(string NewDir)
-		{
-			Settings.Default.LibraryDir = NewDir;
-		}
+        private void ChangeLibraryDir(string NewDir)
+        {
+            Settings.Default.LibraryDir = NewDir;
+        }
 
-		private void OK_Button_Click(object sender, EventArgs e)
-		{
+        private void OK_Button_Click(object sender, EventArgs e)
+        {
             //Determine all the options that might require the user to Reprocess the library
-			bool flag = false;
-			if (Settings.Default.OrganizeMethod != cboOrganizeMethod.SelectedIndex && cboOrganizeMethod.SelectedIndex != 0)
-			{
-				flag = true;
-			}
-			if (Settings.Default.LibraryDir != txtLibrary.Text)
-			{
-				flag = true;
-			}
-			if (Settings.Default.ThumbQuality != (int)udQuality.Value)
-			{
-				flag = true;
-			}
-			if (Settings.Default.ThumbHeight != (int)udHeight.Value)
-			{
-				flag = true;
-			}
-			if (Settings.Default.ThumbWidth != (int)udWidth.Value)
-			{
-				flag = true;
-			}
-			if (flag)
-			{
-				MessageBox.Show("To apply Comics Library, Organize Method, or Thumbnail changes you must choose \"Reprocess All\" from the Tools menu.", "Changed Settings", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-			}
-			Settings.Default.OrganizeMethod = cboOrganizeMethod.SelectedIndex;
-			ChangeLibraryDir(txtLibrary.Text);
-			Settings.Default.ThumbGen = chkThumbnail.Checked;
-			Settings.Default.ThumbRatio = udRatio.Value;
-			Settings.Default.ThumbQuality = (int)udQuality.Value;
-			Settings.Default.ThumbWidth = (int)udWidth.Value;
-			Settings.Default.ThumbHeight = (int)udHeight.Value;
-			Settings.Default.RAREditor = txtRAR.Text;
-			Settings.Default.ZIPEditor = txtZIP.Text;
-			Settings.Default.PDFEditor = txtPDF.Text;
-			Settings.Default.ViewMode = cboViewMode.SelectedIndex;
-			Settings.Default.FindDuplicates = chkDuplicates.Checked;
-			Settings.Default.Save();
-			base.DialogResult = DialogResult.OK;
-			Close();
-		}
+            bool flag = false;
+            if (Settings.Default.OrganizeMethod != cboOrganizeMethod.SelectedIndex && cboOrganizeMethod.SelectedIndex != 0)
+            {
+                flag = true;
+            }
+            if (Settings.Default.LibraryDir != txtLibrary.Text)
+            {
+                flag = true;
+            }
+            if (Settings.Default.ThumbQuality != (int)udQuality.Value)
+            {
+                flag = true;
+            }
+            if (Settings.Default.ThumbHeight != (int)udHeight.Value)
+            {
+                flag = true;
+            }
+            if (Settings.Default.ThumbWidth != (int)udWidth.Value)
+            {
+                flag = true;
+            }
+            if (flag)
+            {
+                MessageBox.Show("To apply Comics Library, Organize Method, or Thumbnail changes you must choose \"Reprocess All\" from the Tools menu.", "Changed Settings", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            Settings.Default.OrganizeMethod = cboOrganizeMethod.SelectedIndex;
+            ChangeLibraryDir(txtLibrary.Text);
+            Settings.Default.ThumbGen = chkThumbnail.Checked;
+            Settings.Default.ThumbRatio = udRatio.Value;
+            Settings.Default.ThumbQuality = (int)udQuality.Value;
+            Settings.Default.ThumbWidth = (int)udWidth.Value;
+            Settings.Default.ThumbHeight = (int)udHeight.Value;
+            Settings.Default.RAREditor = txtRAR.Text;
+            Settings.Default.ZIPEditor = txtZIP.Text;
+            Settings.Default.PDFEditor = txtPDF.Text;
+            Settings.Default.ViewMode = cboViewMode.SelectedIndex;
+            Settings.Default.FindDuplicates = chkDuplicates.Checked;
+            Settings.Default.Save();
+            base.DialogResult = DialogResult.OK;
+            Close();
+        }
 
-		private void Cancel_Button_Click(object sender, EventArgs e)
-		{
-			base.DialogResult = DialogResult.Cancel;
-			Close();
-		}
+        private void Cancel_Button_Click(object sender, EventArgs e)
+        {
+            base.DialogResult = DialogResult.Cancel;
+            Close();
+        }
 
-		private void PreferencesForm_Load(object sender, EventArgs e)
-		{
-			chkDuplicates.Checked = Settings.Default.FindDuplicates;
-			cboOrganizeMethod.SelectedIndex = Settings.Default.OrganizeMethod;
-			chkThumbnail.Checked = Settings.Default.ThumbGen;
-			udRatio.Value = Settings.Default.ThumbRatio;
-			udQuality.Value = Settings.Default.ThumbQuality;
-			udWidth.Value = Settings.Default.ThumbWidth;
-			udHeight.Value = Settings.Default.ThumbHeight;
-			txtLibrary.Text = Settings.Default.LibraryDir;
-			txtRAR.Text = Settings.Default.RAREditor;
-			txtZIP.Text = Settings.Default.ZIPEditor;
-			txtPDF.Text = Settings.Default.PDFEditor;
-			cboViewMode.SelectedIndex = Settings.Default.ViewMode;
-		}
+        private void PreferencesForm_Load(object sender, EventArgs e)
+        {
+            chkDuplicates.Checked = Settings.Default.FindDuplicates;
+            cboOrganizeMethod.SelectedIndex = Settings.Default.OrganizeMethod;
+            chkThumbnail.Checked = Settings.Default.ThumbGen;
+            udRatio.Value = Settings.Default.ThumbRatio;
+            udQuality.Value = Settings.Default.ThumbQuality;
+            udWidth.Value = Settings.Default.ThumbWidth;
+            udHeight.Value = Settings.Default.ThumbHeight;
+            txtLibrary.Text = Settings.Default.LibraryDir;
+            txtRAR.Text = Settings.Default.RAREditor;
+            txtZIP.Text = Settings.Default.ZIPEditor;
+            txtPDF.Text = Settings.Default.PDFEditor;
+            cboViewMode.SelectedIndex = Settings.Default.ViewMode;
+        }
 
         //Make the thumbnail dimensions propotional
-		private void udWidth_ValueChanged(object sender, EventArgs e)
-		{   
+        private void udWidth_ValueChanged(object sender, EventArgs e)
+        {
             /*
 			int h = (int)(udWidth.Value / udRatio.Value);
 
@@ -201,12 +201,12 @@ namespace CarbonComic
             }
             udHeight.Value = h;
             */
-		}
+        }
 
         //Make the thumbnail dimensions propotional
-		private void udHeight_ValueChanged(object sender, EventArgs e)
-		{
-			int w = (int)(udHeight.Value * udRatio.Value);
+        private void udHeight_ValueChanged(object sender, EventArgs e)
+        {
+            int w = (int)(udHeight.Value * udRatio.Value);
 
 
             if (w > udWidth.Maximum)
@@ -214,72 +214,72 @@ namespace CarbonComic
                 w = (int)udWidth.Maximum;
             }
             udWidth.Value = w;
-		}
+        }
 
 
-		private void cmdLibrary_Click(object sender, EventArgs e)
-		{
-			FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-			folderBrowserDialog.ShowNewFolderButton = true;
-			folderBrowserDialog.SelectedPath = txtLibrary.Text;
-			folderBrowserDialog.Description = "Choose a folder to store all of your imported comic files.";
-			DialogResult dialogResult = folderBrowserDialog.ShowDialog();
-			if (dialogResult != DialogResult.Cancel)
-			{
-				txtLibrary.Text = folderBrowserDialog.SelectedPath;
-			}
-		}
+        private void cmdLibrary_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            folderBrowserDialog.ShowNewFolderButton = true;
+            folderBrowserDialog.SelectedPath = txtLibrary.Text;
+            folderBrowserDialog.Description = "Choose a folder to store all of your imported comic files.";
+            DialogResult dialogResult = folderBrowserDialog.ShowDialog();
+            if (dialogResult != DialogResult.Cancel)
+            {
+                txtLibrary.Text = folderBrowserDialog.SelectedPath;
+            }
+        }
 
-		private void cmdRAR_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog openFileDialog = new OpenFileDialog();
-			openFileDialog.FileName = txtRAR.Text;
-			openFileDialog.Title = "RAR Editor";
-			openFileDialog.Filter = "Programs (*.exe)|*.exe";
-			DialogResult dialogResult = openFileDialog.ShowDialog();
-			if (dialogResult != DialogResult.Cancel)
-			{
-				txtRAR.Text = openFileDialog.FileName;
-			}
-		}
+        private void cmdRAR_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.FileName = txtRAR.Text;
+            openFileDialog.Title = "RAR Editor";
+            openFileDialog.Filter = "Programs (*.exe)|*.exe";
+            DialogResult dialogResult = openFileDialog.ShowDialog();
+            if (dialogResult != DialogResult.Cancel)
+            {
+                txtRAR.Text = openFileDialog.FileName;
+            }
+        }
 
-		private void cmdZIP_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog openFileDialog = new OpenFileDialog();
-			openFileDialog.FileName = txtZIP.Text;
-			openFileDialog.Title = "ZIP Editor";
-			openFileDialog.Filter = "Programs (*.exe)|*.exe";
-			DialogResult dialogResult = openFileDialog.ShowDialog();
-			if (dialogResult != DialogResult.Cancel)
-			{
-				txtZIP.Text = openFileDialog.FileName;
-			}
-		}
+        private void cmdZIP_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.FileName = txtZIP.Text;
+            openFileDialog.Title = "ZIP Editor";
+            openFileDialog.Filter = "Programs (*.exe)|*.exe";
+            DialogResult dialogResult = openFileDialog.ShowDialog();
+            if (dialogResult != DialogResult.Cancel)
+            {
+                txtZIP.Text = openFileDialog.FileName;
+            }
+        }
 
-		private void cmdPDF_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog openFileDialog = new OpenFileDialog();
-			openFileDialog.FileName = txtPDF.Text;
-			openFileDialog.Title = "PDF Editor";
-			openFileDialog.Filter = "Programs (*.exe)|*.exe";
-			DialogResult dialogResult = openFileDialog.ShowDialog();
-			if (dialogResult != DialogResult.Cancel)
-			{
-				txtPDF.Text = openFileDialog.FileName;
-			}
-		}
+        private void cmdPDF_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.FileName = txtPDF.Text;
+            openFileDialog.Title = "PDF Editor";
+            openFileDialog.Filter = "Programs (*.exe)|*.exe";
+            DialogResult dialogResult = openFileDialog.ShowDialog();
+            if (dialogResult != DialogResult.Cancel)
+            {
+                txtPDF.Text = openFileDialog.FileName;
+            }
+        }
 
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && components != null)
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && components != null)
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		private void InitializeComponent()
-		{
+        private void InitializeComponent()
+        {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreferencesForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -1308,6 +1308,6 @@ namespace CarbonComic
             this.tabPage7.PerformLayout();
             this.ResumeLayout(false);
 
-		}
-	}
+        }
+    }
 }

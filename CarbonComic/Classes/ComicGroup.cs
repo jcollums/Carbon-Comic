@@ -153,13 +153,13 @@ namespace CarbonComic
 				if (Changes.Contains("PublisherID"))
 				{
 					arrayList.Add("pub_id='" + iPublisherID + "'");
-                    CC.SQL.ExecQuery("UPDATE series SET pub_id=" + iPublisherID + " WHERE group_id=" + ID);
+					CC.SQL.ExecQuery("UPDATE series SET pub_id=" + iPublisherID + " WHERE group_id=" + ID);
 				}
 				CC.SQL.ExecQuery("UPDATE groups SET " + string.Join(",", CC.StringList(arrayList)) + " WHERE id=" + ID);
 				if (Settings.Default.OrganizeMethod != 0)
 				{
-                    Query query = CC.SQL.ExecQuery("SELECT name FROM publishers WHERE id=" + PublisherID);
-                    query.NextResult();
+					Query query = CC.SQL.ExecQuery("SELECT name FROM publishers WHERE id=" + PublisherID);
+					query.NextResult();
 
 					string name = (string)query.hash[0];
 					query.Close();
@@ -168,19 +168,19 @@ namespace CarbonComic
 					{
 						string text = Settings.Default.LibraryDir + "\\" + CC.URLize(name) + "\\" + CC.URLize(OldName) + "\\";
 						string text2 = Settings.Default.LibraryDir + "\\" + CC.URLize(name) + "\\" + CC.URLize(Name) + "\\";
-                        CC.SQL.ExecQuery("UPDATE issues SET filename=" + CC.SQLReplaceLeft("filename", text, text2));
+						CC.SQL.ExecQuery("UPDATE issues SET filename=" + CC.SQLReplaceLeft("filename", text, text2));
 						CC.Rename(text, text2);
 					}
 					if (Changes.Contains("PublisherID"))
 					{
 						query = CC.SQL.ExecQuery("SELECT name FROM publishers WHERE id=" + OldPublisherID);
-                        query.NextResult();
+						query.NextResult();
 
 						string name2 = (string)query.hash[0];
 						query.Close();
 						string text = Settings.Default.LibraryDir + "\\" + CC.URLize(name2) + "\\" + CC.URLize(Name) + "\\";
 						string text2 = Settings.Default.LibraryDir + "\\" + CC.URLize(name) + "\\" + CC.URLize(Name) + "\\";
-                        CC.SQL.ExecQuery("UPDATE issues SET filename=" + CC.SQLReplaceLeft("filename", text, text2));
+						CC.SQL.ExecQuery("UPDATE issues SET filename=" + CC.SQLReplaceLeft("filename", text, text2));
 						CC.Rename(text, text2);
 					}
 				}

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace CarbonComic
 {
-    //This form handles setting information for multiple issues at once
+	//This form handles setting information for multiple issues at once
 	public class IssueMultiForm : Form
 	{
 		private IContainer components;
@@ -378,16 +378,16 @@ namespace CarbonComic
 			{
 				comicIssue = (ComicIssue)CC.Issues[MainForm.Root.IssueList.SelectedIndices[i]];
 
-                //set the plot title of the issue if checked
-                //(sorry for the three different naming conventions here)
+				//set the plot title of the issue if checked
+				//(sorry for the three different naming conventions here)
 				if (chkStory.Checked)
 				{
 					comicIssue.Name = txtPlot.Text;
 				}
-                //set series name of the issue if checked
+				//set series name of the issue if checked
 				if (chkSeries.Checked)
 				{
-                    //Find the ID of the selected Series
+					//Find the ID of the selected Series
 					if (num == -1)
 					{
 						num = ComicSeries.GetID(cboSeries.Text, comicIssue.GroupID, comicIssue.PublisherID);
@@ -395,60 +395,60 @@ namespace CarbonComic
 					comicIssue.SeriesID = num;
 					comicIssue.SeriesName = cboSeries.Text;
 				}
-                //set comments if checked
+				//set comments if checked
 				if (chkComments.Checked)
 				{
 					comicIssue.Comments = txtComments.Text;
 				}
-                //set volume if checked
+				//set volume if checked
 				if (chkVol.Checked)
 				{
 					comicIssue.SeriesVolume = (int)udVol.Value;
 				}
-                //set published date if checked
+				//set published date if checked
 				if (chkPublished.Checked)
 				{
 					comicIssue.Published = published;
-                    //If the Auto-Date feature is being used then we're assuming
-                    //that the selected issues were published a set amount of time apart, sequentially
+					//If the Auto-Date feature is being used then we're assuming
+					//that the selected issues were published a set amount of time apart, sequentially
 					if (cboAutoDate.SelectedIndex != -1)
 					{
 						switch (cboAutoDate.Text)
 						{
-						case "Weekly":
-							published = published.AddDays(7.0);
-							break;
-						case "Bi-Weekly":
-							published = published.AddDays(14.0);
-							break;
-						case "Monthly":
-							published = published.AddMonths(1);
-							break;
-						case "Bi-Monthly":
-							published = published.AddMonths(2);
-							break;
-						case "Yearly":
-							published = published.AddYears(1);
-							break;
+							case "Weekly":
+								published = published.AddDays(7.0);
+								break;
+							case "Bi-Weekly":
+								published = published.AddDays(14.0);
+								break;
+							case "Monthly":
+								published = published.AddMonths(1);
+								break;
+							case "Bi-Monthly":
+								published = published.AddMonths(2);
+								break;
+							case "Yearly":
+								published = published.AddYears(1);
+								break;
 						}
 					}
 				}
-                //set issue type if checked
+				//set issue type if checked
 				if (chkType.Checked)
 				{
 					comicIssue.Type = cboType.SelectedIndex;
 				}
-                //set issue number if checked
+				//set issue number if checked
 				if (chkNumber.Checked)
 				{
-                    //we're assuming that the issues were published sequentially after the start value
+					//we're assuming that the issues were published sequentially after the start value
 					comicIssue.Number = (int)((decimal)i + udStart.Value);
 					comicIssue.Type = 0;    //Normal Issue
 				}
 				comicIssue.SaveChanges();
-				
-                //Since we've made changes, the files may need to be renamed or moved in accordance with user prefs
-                if (Settings.Default.OrganizeMethod != 0)
+
+				//Since we've made changes, the files may need to be renamed or moved in accordance with user prefs
+				if (Settings.Default.OrganizeMethod != 0)
 				{
 					comicIssue.OrganizeFile();
 				}
@@ -479,12 +479,12 @@ namespace CarbonComic
 			chkStory.Checked = true;
 		}
 
-        //set form properties based on selected issues
+		//set form properties based on selected issues
 		private void LoadIssues(ListView.SelectedIndexCollection Indices)
 		{
 			ComicIssue comicIssue = null;
 
-            //Generic variables names!!!
+			//Generic variables names!!!
 			bool flag = false;
 			bool flag2 = true;
 			bool flag3 = true;
@@ -495,7 +495,7 @@ namespace CarbonComic
 			Cursor = Cursors.AppStarting;
 			ComicIssue comicIssue2 = (ComicIssue)CC.Issues[Indices[0]]; //get the first issue
 
-            //If information in subsequent issues doesn't match, the field will be flagged and be blank on the form
+			//If information in subsequent issues doesn't match, the field will be flagged and be blank on the form
 			for (int i = 1; i <= Indices.Count - 1; i++)
 			{
 				if (comicIssue2.Missing)
@@ -532,7 +532,7 @@ namespace CarbonComic
 			udVol.Value = (flag4 ? comicIssue.SeriesVolume : 0);
 			cboType.SelectedIndex = (flag5 ? comicIssue.Type : 0);
 
-            //If file organization is turned on and one of the issues is missing, disable everything.
+			//If file organization is turned on and one of the issues is missing, disable everything.
 			if (Settings.Default.OrganizeMethod != 0)
 			{
 				foreach (Control control in base.Controls)

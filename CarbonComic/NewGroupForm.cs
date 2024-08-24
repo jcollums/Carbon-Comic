@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace CarbonComic
 {
-    //This form create a new group
+	//This form create a new group
 	public class NewGroupForm : Form
 	{
 		private IContainer components;
@@ -23,7 +23,7 @@ namespace CarbonComic
 
 		private void NewGroupForm_Load(object sender, EventArgs e)
 		{
-            //load list of publishers into the combobox
+			//load list of publishers into the combobox
 			Query query = CC.SQL.ExecQuery("SELECT * FROM publishers ORDER BY name");
 			while (query.NextResult())
 			{

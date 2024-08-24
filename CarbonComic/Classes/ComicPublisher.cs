@@ -59,7 +59,7 @@ namespace CarbonComic
 			iName = (string)sqlRow.hash["name"];
 		}
 
-        //Handle the assignment of groups to publisher, including moving directories
+		//Handle the assignment of groups to publisher, including moving directories
 		public void AdoptGroups(ArrayList Groups)
 		{
 			SQL sQL = new SQL();

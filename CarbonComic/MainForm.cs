@@ -133,30 +133,30 @@ namespace CarbonComic
         public string OrderMode = "DESC";
 
         public string[] OrdersASC = new string[9]
-		{
-			"IIF(missing, 0, IIF(marked, 1, -1))",
-			"i.issue_no",
-			"i.name",
-			"s.name, i.series_vol, i.type, i.issue_no, i.published",
-			"i.series_vol",
-			"i.published",
-			"i.date_added",
-			"i.filename",
-			"i.filesize"
-		};
+        {
+            "IIF(missing, 0, IIF(marked, 1, -1))",
+            "i.issue_no",
+            "i.name",
+            "s.name, i.series_vol, i.type, i.issue_no, i.published",
+            "i.series_vol",
+            "i.published",
+            "i.date_added",
+            "i.filename",
+            "i.filesize"
+        };
 
         public string[] OrdersDESC = new string[9]
-		{
-			"IIF(missing, 0, IIF(marked, 1, -1)) DESC",
-			"i.issue_no DESC",
-			"i.name DESC",
-			"s.name DESC, i.series_vol, i.type, i.issue_no, i.published",
-			"i.series_vol DESC",
-			"i.published DESC",
-			"i.date_added DESC",
-			"i.filename DESC",
-			"i.filesize DESC"
-		};
+        {
+            "IIF(missing, 0, IIF(marked, 1, -1)) DESC",
+            "i.issue_no DESC",
+            "i.name DESC",
+            "s.name DESC, i.series_vol, i.type, i.issue_no, i.published",
+            "i.series_vol DESC",
+            "i.published DESC",
+            "i.date_added DESC",
+            "i.filename DESC",
+            "i.filesize DESC"
+        };
 
         public string OrderSQL = "s.name, i.series_vol, i.type, i.issue_no, i.published";
 
@@ -2336,17 +2336,17 @@ namespace CarbonComic
             string text2 = (comicIssue.Published.Year != 1) ? comicIssue.Published.ToString("MMM yyyy") : "";
             string text3 = (comicIssue.SeriesVolume < 1) ? "N/A" : Convert.ToString(comicIssue.SeriesVolume);
             string[] items = new string[9]
-			{
-				"",
-				text,
-				comicIssue.Name,
-				comicIssue.SeriesName,
-				text3,
-				text2,
-				comicIssue.DateAdded.ToString("M/d/yyyy h:mm tt"),
-				comicIssue.FileName,
-				CC.ByteToString((double)comicIssue.FileSize)
-			};
+            {
+                "",
+                text,
+                comicIssue.Name,
+                comicIssue.SeriesName,
+                text3,
+                text2,
+                comicIssue.DateAdded.ToString("M/d/yyyy h:mm tt"),
+                comicIssue.FileName,
+                CC.ByteToString((double)comicIssue.FileSize)
+            };
             Color backColor = (e.ItemIndex % 2 != 0) ? Color.White : Color.WhiteSmoke;
             e.Item = new ListViewItem(items, num, Color.Black, backColor, new Font("Lucidia Grande", 8f));
             e.Item.ToolTipText = text + Environment.NewLine + comicIssue.SeriesName;
@@ -2868,7 +2868,7 @@ namespace CarbonComic
         {
             if (IssueList.SelectedIndices.Count > 0)
             {
-          
+
                 ComicIssue comicIssue = (ComicIssue)CC.Issues[IssueList.SelectedIndices[0]];
                 if (!SourceSplit.Panel2Collapsed)
                 {
@@ -2901,11 +2901,11 @@ namespace CarbonComic
                     num += FindComics(directoryInfo2.FullName);
                 }
                 string[] array4 = new string[3]
-				{
-					"*.cbr",
-					"*.cbz",
-					"*.pdf"
-				};
+                {
+                    "*.cbr",
+                    "*.cbz",
+                    "*.pdf"
+                };
                 string[] array5 = array4;
                 foreach (string searchPattern in array5)
                 {
@@ -3147,7 +3147,7 @@ namespace CarbonComic
             if (e.Button == MouseButtons.Right)
             {
                 //IssueMenu.Enabled = (IssueList.SelectedIndices.Count > 0);
-                    
+
                 ToolStripMenuItem issueReadlistMenu = IssueReadlistMenu;
                 if (CC.Readlists.Count > 0)
                 {
